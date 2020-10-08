@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Build and Publish the Docker image
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.ACCESS_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: oke-aditya/py_fresh/py_fresh
+        tags: latest
