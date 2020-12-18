@@ -28,4 +28,4 @@ jobs:
 
       - name: Flake8 Code Formatting
         run: |
-          flake8 .
+          flake8 . --max-line-length=127
